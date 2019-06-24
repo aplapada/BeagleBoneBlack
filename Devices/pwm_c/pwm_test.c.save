@@ -1,0 +1,80 @@
+#include <stdio.h>
+   #include <unistd.h>
+   #include <sys/types.h>
+   #include <sys/stat.h>
+   #include <fcntl.h>
+   #include <poll.h>
+   #include <string.h>
+   int main(int argc, char *argv[])
+   {
+       int f;
+       struct pollfd poll_fds[1];
+       int ret;
+       char value[4];
+       int n;
+	char cmd[10];
+	unsigned int cmd_value = 0;
+	char str[12];
+	while(1){
+		printf("Give command (duty, period, on, off):");
+		scanf("%s", &cmd);
+		printf("Give value:");
+		scanf("%u", &cmd_value);
+		printf("%u\n", cmd_value);
+
+		if(strcmp(cmd,"duty") == 0){
+			f = open("/sys/class/pwm/pwmchip4/pwm-4:0/duty_cycle", O_WRONLY);
+			cmd_value *= 1000000;
+			sprintf(str, "%u", cmd_value);
+			write(f,str,sizeof(str));	
+		}else if(strcmp(cmd,"period")==0){
+			f = open("/sys/class/pwm/pwmchip4/pwm-4:0/period", O_WRONLY);
+                        cmd_value *= 1000000;
+                        
+				write(f,cmd_value,sizeof(cmd_value));   
+		}/*else if(strcmp(cmd,"on")==0 || strcmp(cmd, "off") == 0){
+			f = open("/sys/class/pwm/pwmchip4/pwm-4:0/enable", O_WRONLY);
+			if(strcmp(cmd,"on") == 0){
+				write(f,'1',sizeof(char));
+			}else if(strcmp(cmd,"off") == 0){
+				write(f,'0',sizeof(char));
+			}
+		}
+*/	}
+/*
+	char fall[] = "falling";
+        f = open("/sys/class/gpio/gpio115/edge",O_WRONLY);
+           if (f == -1) {
+           perror("Can't open gpio115");
+           return 1; 
+           }
+        n=write(f, fall, sizeof(fall));       
+        if(n == sizeof(fall)){
+                printf("write success\n");
+        }
+
+       f = open("/sys/class/gpio/gpio115/value", O_RDONLY);
+       if (f == -1) {
+           perror("Can't open gpio115");
+           return 1; }
+       n = read(f, &value, sizeof(value));
+       if (n > 0) {
+           printf("Initial value=%c\n",
+                  value[0]);
+           lseek(f, 0, SEEK_SET);
+       }
+
+	poll_fds[0].fd = f;
+       	poll_fds[0].events = POLLPRI | POLLERR;
+       	while (1) {
+           printf("Waiting\n");
+           ret = poll(poll_fds, 1, -1);
+           if (ret > 0) {
+               n = read(f, &value, sizeof(value));
+               printf("Button pressed: value=%c\n",
+                       value[0]);
+               lseek(f, 0, SEEK_SET);
+           }
+       	}*/
+       	return 0;
+   }
