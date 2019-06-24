@@ -1,0 +1,1 @@
+cmd_/home/apla/char_simple/char_simple.ko := ld -EL -r  -T ./scripts/module-common.lds --build-id  -T ./arch/arm/kernel/module.lds -o /home/apla/char_simple/char_simple.ko /home/apla/char_simple/char_simple.o /home/apla/char_simple/char_simple.mod.o ;  true

@@ -1,0 +1,1 @@
+cmd_/home/apla/button/button.ko := ld -EL -r  -T ./scripts/module-common.lds --build-id  -T ./arch/arm/kernel/module.lds -o /home/apla/button/button.ko /home/apla/button/button.o /home/apla/button/button.mod.o ;  true

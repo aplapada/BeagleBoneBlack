@@ -1,0 +1,1 @@
+cmd_/home/apla/ebbchar/ebbcharmutex/ebbcharmutex.ko := ld -EL -r  -T ./scripts/module-common.lds --build-id  -T ./arch/arm/kernel/module.lds -o /home/apla/ebbchar/ebbcharmutex/ebbcharmutex.ko /home/apla/ebbchar/ebbcharmutex/ebbcharmutex.o /home/apla/ebbchar/ebbcharmutex/ebbcharmutex.mod.o ;  true

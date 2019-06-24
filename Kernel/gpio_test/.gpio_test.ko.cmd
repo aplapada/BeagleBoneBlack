@@ -1,0 +1,1 @@
+cmd_/home/apla/gpio_test/gpio_test.ko := ld -EL -r  -T ./scripts/module-common.lds --build-id  -T ./arch/arm/kernel/module.lds -o /home/apla/gpio_test/gpio_test.ko /home/apla/gpio_test/gpio_test.o /home/apla/gpio_test/gpio_test.mod.o ;  true

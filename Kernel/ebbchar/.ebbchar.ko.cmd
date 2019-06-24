@@ -1,0 +1,1 @@
+cmd_/home/apla/ebbchar/ebbchar.ko := ld -EL -r  -T ./scripts/module-common.lds --build-id  -T ./arch/arm/kernel/module.lds -o /home/apla/ebbchar/ebbchar.ko /home/apla/ebbchar/ebbchar.o /home/apla/ebbchar/ebbchar.mod.o ;  true
